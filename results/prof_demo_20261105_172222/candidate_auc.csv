@@ -1,0 +1,4 @@
+method,candidate_auc
+rf_original,0.9208271798993541
+rf_context,0.9431563255981533
+rf_gaussian,0.9420522708645954

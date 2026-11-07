@@ -1,0 +1,45 @@
+{
+  "cohort": "labelled car/taxi intervals in the existing OSM extent",
+  "max_users": 20,
+  "trips_per_user": 3,
+  "min_points": 100,
+  "min_duration_s": 120,
+  "max_gap_s": 60,
+  "max_sampled_median_road_distance_m": 50,
+  "max_sampled_p95_road_distance_m": 100,
+  "max_points": 300,
+  "split": "GroupShuffleSplit by source user, test_size=0.25, seed=42",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "levels_m": [
+    5,
+    10,
+    20
+  ],
+  "road_identity": "normalized geometry plus highway class; direction not inferred",
+  "models": [
+    "nearest",
+    "distance plus local causal heading",
+    "RF original mixed-pattern",
+    "RF contextual mixed-pattern",
+    "RF contextual Gaussian-only"
+  ],
+  "selection": "Fixed settings; no evaluation-driven tuning or model selection",
+  "uncertainty": "paired user-cluster bootstrap after averaging seeds within users",
+  "status": "Protocol fixed before extension evaluation",
+  "context_features": [
+    "distance",
+    "rank",
+    "local undirected heading mismatch",
+    "log road length",
+    "candidate count",
+    "distance gap",
+    "road class"
+  ],
+  "gaussian_training_budget": "Three Gaussian seeds vs one seed times three patterns; same point-condition budget"
+}
